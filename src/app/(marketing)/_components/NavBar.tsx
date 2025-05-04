@@ -19,12 +19,12 @@ export function NavBar() {
           About
         </Link>
         <span>
-          {/* <SignedIn>
+          <SignedIn>
             <Link href="/dashboard">Dashboard</Link>
           </SignedIn>
           <SignedOut>
             <SignInButton>Login</SignInButton>
-          </SignedOut> */}
+          </SignedOut>
         </span>
       </nav>
     </header>

@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Libraries Used
+
+- ShadCN
+- Clerk
+
+## Clerk:
+
+- Setup an account in clerk
+- Create an application using email, google and github
+- Put the environment variables in the .env file
+  The environment variables to be included in the .env file are:
+- NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+- CLERK_SECRET_KEY
+  These variables are obtained in the clerk website after starting a project
+
+## Neon
+
+## Stripe
