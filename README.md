@@ -55,4 +55,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 Use the db in neon and import the link into .env and .ent.example files
 The ORM is drizzle
 
+##Drizzle
+npm run db:generate
+npm run db:migrate
+npm run studio
+
 ## Stripe
