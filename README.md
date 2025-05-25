@@ -60,4 +60,13 @@ npm run db:generate
 npm run db:migrate
 npm run studio
 
+##ngrock
+Deploy ng rock and start the command like
+ngrok http --url=lizard-dear-sculpin.ngrok-free.app 3000
+Configure ngrock according to the link: https://dashboard.ngrok.com/get-started/setup/linux
+Go to Webhooks -> Endpoints -> Add Endpoint -> Endpoint URL put https://lizard-dear-sculpin.ngrok-free.app/api/webhooks/clerk
+
+Sync Clerk data to your app with webhooks: https://clerk.com/docs/webhooks/sync-data
+Select User.created and user.deleted
+
 ## Stripe
