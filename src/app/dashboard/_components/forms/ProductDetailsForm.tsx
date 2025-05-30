@@ -16,8 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { productDetailsSchema } from "@/schemas/products";
-import { createProduct } from "@/server/db/actions/products";
+
 import { useToast } from "@/hooks/use-toast";
+import { createProduct } from "@/server/actions/products";
 
 export function ProductDetailsForm() {
   const { toast } = useToast();
