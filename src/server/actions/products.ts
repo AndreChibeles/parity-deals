@@ -35,8 +35,6 @@ export async function deleteProduct(id: string) {
 
   const isSuccess = await deleteProductDb({ id, userId });
 
-  revalidatePath("/dashboard");
-
   return {
     error: !isSuccess,
     message: isSuccess ? "Successfully deleted your product" : errorMessage,
