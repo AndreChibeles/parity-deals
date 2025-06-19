@@ -10,7 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { clearFullCache } from "@/lib/cache";
-import { getProduct, getProductCountryGroups } from "@/server/db/products";
+import {
+  getProduct,
+  getProductCountryGroups,
+  getProductCustomization,
+} from "@/server/db/products";
 import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
 
@@ -45,7 +49,9 @@ export default async function EditProductPage({
         <TabsContent value="country">
           <CountryTab productId={productId} userId={userId} />
         </TabsContent>
-        <TabsContent value="customization">Customization</TabsContent>
+        <TabsContent value="customization">
+          <CustomizationsTab productId={productId} userId={userId} />
+        </TabsContent>
       </Tabs>
     </PageWithBackButton>
   );
@@ -98,6 +104,34 @@ async function CountryTab({
           productId={productId}
           countryGroups={countryGroups}
         />
+      </CardContent>
+    </Card>
+  );
+}
+
+async function CustomizationsTab({
+  productId,
+  userId,
+}: {
+  productId: string;
+  userId: string;
+}) {
+  const customization = await getProductCustomization({ productId, userId });
+
+  if (customization == null) return notFound();
+  // const canRemove = await canRemoveBranding(userId)
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-xl">Banner Customization</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {/* <ProductCustomizationForm 
+          canRemoveBranding={canRemove}
+          canCustomizeBanner={await canCustomizeBanner(userId)}
+          customization={customization}
+        /> */}
       </CardContent>
     </Card>
   );

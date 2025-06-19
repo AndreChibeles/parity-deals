@@ -59,6 +59,7 @@ The ORM is drizzle
 npm run db:generate
 npm run db:migrate
 npm run studio
+npm run db:updateCountryGroups
 
 ##ngrock
 Deploy ng rock and start the command like
