@@ -1,4 +1,5 @@
 import { CountryDiscountsForm } from "@/app/dashboard/_components/forms/CountryDiscountsForm";
+import { ProductCustomizationForm } from "@/app/dashboard/_components/forms/ProductCustomizationForm";
 import { ProductDetailsForm } from "@/app/dashboard/_components/forms/ProductDetailsForm";
 import { PageWithBackButton } from "@/app/dashboard/_components/PageWithBackButton";
 import {
@@ -15,7 +16,7 @@ import {
   getProductCountryGroups,
   getProductCustomization,
 } from "@/server/db/products";
-import { canRemoveBranding } from "@/server/permissions";
+import { canCustomizeBanner, canRemoveBranding } from "@/server/permissions";
 import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
 
@@ -120,7 +121,6 @@ async function CustomizationsTab({
   const customization = await getProductCustomization({ productId, userId });
 
   if (customization == null) return notFound();
-  const canRemove = await canRemoveBranding(userId);
 
   return (
     <Card>
@@ -128,11 +128,11 @@ async function CustomizationsTab({
         <CardTitle className="text-xl">Banner Customization</CardTitle>
       </CardHeader>
       <CardContent>
-        {/* <ProductCustomizationForm 
-          canRemoveBranding={canRemove}
-          canCustomizeBanner={await canCustomizeBanner(userId)}
+        <ProductCustomizationForm
+          canRemoveBranding={await canRemoveBranding(userId)}
+          canCustomizeBanner={(await canCustomizeBanner(userId)) || true}
           customization={customization}
-        /> */}
+        />
       </CardContent>
     </Card>
   );
