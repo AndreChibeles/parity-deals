@@ -15,6 +15,7 @@ import {
   getProductCountryGroups,
   getProductCustomization,
 } from "@/server/db/products";
+import { canRemoveBranding } from "@/server/permissions";
 import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
 
@@ -119,7 +120,7 @@ async function CustomizationsTab({
   const customization = await getProductCustomization({ productId, userId });
 
   if (customization == null) return notFound();
-  // const canRemove = await canRemoveBranding(userId)
+  const canRemove = await canRemoveBranding(userId);
 
   return (
     <Card>
