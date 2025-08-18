@@ -30,6 +30,7 @@ export default async function Dashboard() {
             New Product
           </Link>
         </Button>
+        <div>Test</div>
       </h2>
       <ProductGrid products={products} />
     </>
