@@ -40,7 +40,7 @@ export async function updateProduct(
   const { userId } = auth();
   const { success, data } = productDetailsSchema.safeParse(unsafeData);
   const errorMessage = "There was an error updating your product";
-
+  /* Test */
   if (!success || userId == null) {
     return { error: true, message: errorMessage };
   }
